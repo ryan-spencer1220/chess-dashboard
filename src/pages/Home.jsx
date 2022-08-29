@@ -4,8 +4,10 @@ import UserSearch from "../components/UserSearch";
 
 const Home = () => {
   return (
-    <UserSearch />
-    // {userName ? <UserDashboard /> : <UserSearch />}
+    <>
+      <UserSearch />
+      <UserDashboard />
+    </>
   );
 };
 

@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import { ChessContext } from "./context/ChessContext";
-import UserSearch from "./components/UserSearch";
-import UserDashboard from "./components/UserDashboard";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import About from "../src/pages/About";
+import User from "./pages/User";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -18,10 +17,13 @@ function App() {
       <Router>
         <div className="flex flex-col justify-between h-screen">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+          <main className="container mx-auto px-3 pb-12">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/user/:login" element={<User />} />
+            </Routes>
+          </main>
         </div>
       </Router>
     </ChessContext.Provider>
