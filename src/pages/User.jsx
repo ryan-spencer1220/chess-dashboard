@@ -2,8 +2,11 @@ import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ChessContext } from "../context/ChessContext";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function User() {
+  const [userStats, setUserStats] = useState({});
   const { userData } = useContext(ChessContext);
 
   const {
@@ -19,6 +22,28 @@ function User() {
     status,
   } = userData;
 
+  const fetchUserStats = async (username) => {
+    try {
+      let res = await fetch(
+        `https://api.chess.com/pub/player/${username}/stats`
+      );
+      let resJSON = await res.json();
+      if (res.status === 200) {
+        setUserStats(resJSON);
+        console.log("API Call", resJSON);
+      } else {
+        // setError("Something went wrong, please check your username!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log();
+    fetchUserStats(userData.username);
+  }, []);
+
   return (
     <>
       <div className="w-full mx-auto">
@@ -28,15 +53,14 @@ function User() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 mb-8 md:gap-8">
           <div className="custom-card-image mb-6 md:mb-0">
             <div className="rounded-lg shadow-xl card image-full">
               <figure>
-                <img src={avatar} alt="" />
+                <img src={avatar} alt="" height={300} width={300} />
               </figure>
               <div className="card-body justify-end">
                 <h2 className="card-title mb-0">{name}</h2>
-                <p className="flex-grow-0">{url}</p>
               </div>
             </div>
           </div>
