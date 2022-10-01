@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { ChessContext } from "../context/ChessContext";
 import Chess from "../components/assets/chess.jpg";
+import { Link } from "react-router-dom";
 
 const UserSearch = () => {
   const { userName, setUserName, userData, setUserData } =
@@ -16,6 +17,7 @@ const UserSearch = () => {
       let resJSON = await res.json();
       if (res.status === 200) {
         setUserData(resJSON);
+        console.log(resJSON);
       } else {
         setError("Something went wrong, please check your username!");
       }
@@ -44,7 +46,7 @@ const UserSearch = () => {
             <div className="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0">
               <button
                 type="submit"
-                className="w-full md:w-auto flex justify-center items-center p-6 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
+                className="w-full md:w-auto flex justify-center items-center p-6 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-cyan-100 hover:bg-opacity-90 hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
               >
                 <span>Next</span>
                 <svg
@@ -63,7 +65,13 @@ const UserSearch = () => {
                   <line x1="13" y1="6" x2="19" y2="12" />
                 </svg>
               </button>
+              <Link to="/user">
+                <button className="btn" disabled={userData ? false : true}>
+                  View Stats
+                </button>
+              </Link>
             </div>
+            {error && <p>{error}</p>}
           </form>
 
           <div className="mt-12 border-b border-b-gray-300"></div>
@@ -106,20 +114,3 @@ const UserSearch = () => {
 };
 
 export default UserSearch;
-
-{
-  /* 
-<input
-  value={userName}
-  onChange={handleChange}
-  type="text"
-  placeholder="Enter Username"
-  className="p-2 px-4 text-center text-white bg-zinc-800 border border-zinc-600 placeholder:text-xs placeholder:text-center md:text-left placeholder:md:text-left focus:outline-none"
-/>
-<button type="submit" className="btn">
-  Search
-</button>
-</form> */
-}
-
-// {error && <p>{error}</p>}

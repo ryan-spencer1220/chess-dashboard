@@ -15,13 +15,13 @@ function App() {
       value={{ userName, setUserName, userData, setUserData }}
     >
       <Router>
-        <div className="flex flex-col justify-between h-screen">
+        <div className="flex flex-col justify-between">
           <Navbar />
-          <main className="container mx-auto px-3 pb-12">
+          <main className="mx-auto px-3 pb-12">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/user/:login" element={<User />} />
+              <Route path="/user" element={<User />} />
             </Routes>
           </main>
         </div>
