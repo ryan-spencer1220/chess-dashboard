@@ -1,4 +1,6 @@
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
+import { MdOutlineCardMembership } from "react-icons/md";
+import { AiFillCrown } from "react-icons/ai";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ChessContext } from "../context/ChessContext";
@@ -11,15 +13,19 @@ function User() {
 
   const {
     avatar,
+    is_streamer,
     url,
     name,
-    userName,
+    username,
+    following,
     followers,
     country,
     location,
     last_online,
     joined,
     status,
+    twitch_url,
+    title,
   } = userData;
 
   const fetchUserStats = async (username) => {
@@ -46,21 +52,22 @@ function User() {
 
   return (
     <>
-      <div className="w-full mx-auto">
+      <div className="w-full mx-auto lg:w-10/12">
         <div className="mb-4">
           <Link to="/" className="btn btn-ghost">
             Back To Search
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 mb-8 md:gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-3 mb-8 md:gap-8">
           <div className="custom-card-image mb-6 md:mb-0">
             <div className="rounded-lg shadow-xl card image-full">
               <figure>
-                <img src={avatar} alt="" height={300} width={300} />
+                <img src={avatar} alt="" />
               </figure>
               <div className="card-body justify-end">
                 <h2 className="card-title mb-0">{name}</h2>
+                <p className="flex-grow-0">{username}</p>
               </div>
             </div>
           </div>
@@ -69,12 +76,12 @@ function User() {
             <div className="mb-6">
               <h1 className="text-3xl card-title">
                 {name}
-                <div className="ml-2 mr-1 badge badge-success">{joined}</div>
-                {last_online && (
-                  <div className="mx-1 badge badge-info">Hireable</div>
+                <div className="ml-2 mr-1 badge badge-success">{title}</div>
+                {is_streamer && (
+                  <div className="mx-1 badge badge-info">Streamer</div>
                 )}
               </h1>
-              <p>{url}</p>
+              <p>{username}</p>
               <div className="mt-4 card-actions">
                 <a
                   href={url}
@@ -94,26 +101,12 @@ function User() {
                   <div className="text-lg stat-value">{location}</div>
                 </div>
               )}
-              {status && (
+              {twitch_url && (
                 <div className="stat">
-                  <div className="stat-title text-md">Website</div>
+                  <div className="stat-title text-md">Twitch</div>
                   <div className="text-lg stat-value">
-                    <a href={url} target="_blank" rel="noreferrer">
-                      {url}
-                    </a>
-                  </div>
-                </div>
-              )}
-              {userName && (
-                <div className="stat">
-                  <div className="stat-title text-md">Twitter</div>
-                  <div className="text-lg stat-value">
-                    <a
-                      href={`https://twitter.com/${userName}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {userName}
+                    <a href={twitch_url} target="_blank" rel="noreferrer">
+                      {twitch_url}
                     </a>
                   </div>
                 </div>
@@ -136,9 +129,9 @@ function User() {
 
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaUserFriends className="text-3xl md:text-5xl" />
+                <MdOutlineCardMembership className="text-3xl md:text-5xl" />
               </div>
-              <div className="stat-title pr-5">Following</div>
+              <div className="stat-title pr-5">Status</div>
               <div className="stat-value pr-5 text-3xl md:text-4xl">
                 {status}
               </div>
@@ -146,21 +139,11 @@ function User() {
 
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaCodepen className="text-3xl md:text-5xl" />
+                <AiFillCrown className="text-3xl md:text-5xl" />
               </div>
-              <div className="stat-title pr-5">Public Repos</div>
+              <div className="stat-title pr-5">Title</div>
               <div className="stat-value pr-5 text-3xl md:text-4xl">
-                {country}
-              </div>
-            </div>
-
-            <div className="stat">
-              <div className="stat-figure text-secondary">
-                <FaStore className="text-3xl md:text-5xl" />
-              </div>
-              <div className="stat-title pr-5">Public Gists</div>
-              <div className="stat-value pr-5 text-3xl md:text-4xl">
-                {status}
+                {title}
               </div>
             </div>
           </div>
