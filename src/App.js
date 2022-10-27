@@ -12,10 +12,18 @@ import Alert from "./components/Alert";
 function App() {
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState(null);
+  const [userStats, setUserStats] = useState(null);
 
   return (
     <ChessContext.Provider
-      value={{ userName, setUserName, userData, setUserData }}
+      value={{
+        userName,
+        setUserName,
+        userData,
+        setUserData,
+        userStats,
+        setUserStats,
+      }}
     >
       <Router>
         <div className="flex flex-col justify-between h-screen">

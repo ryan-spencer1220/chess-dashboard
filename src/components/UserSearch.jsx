@@ -4,14 +4,30 @@ import Chess from "../components/assets/chess.jpg";
 import { Link } from "react-router-dom";
 
 const UserSearch = () => {
-  const { userName, setUserName, userData, setUserData } =
+  const { userName, setUserName, setUserData, setUserStats } =
     useContext(ChessContext);
   const [error, setError] = useState("");
 
   const handleChange = (e) => setUserName(e.target.value);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchUserStats = async () => {
+    try {
+      let res = await fetch(
+        `https://api.chess.com/pub/player/${userName}/stats`
+      );
+      let resJSON = await res.json();
+      if (res.status === 200) {
+        setUserStats(resJSON);
+        console.log(userName, resJSON);
+      } else {
+        setError("Something went wrong, please check your username!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchUserData = async () => {
     try {
       let res = await fetch(`https://api.chess.com/pub/player/${userName}`);
       let resJSON = await res.json();
@@ -24,6 +40,12 @@ const UserSearch = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    fetchUserData();
+    fetchUserStats();
   };
 
   return (
