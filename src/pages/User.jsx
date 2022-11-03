@@ -4,6 +4,7 @@ import { AiFillCrown } from "react-icons/ai";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ChessContext } from "../context/ChessContext";
+import RecentGames from "../components/RecentGames";
 
 function User() {
   const { userData, userStats } = useContext(ChessContext);
@@ -98,7 +99,7 @@ function User() {
                 </div>
               </div>
             ) : (
-              <></>
+              <>N/A</>
             )}
             {userStats.chess_rapid.last.rating ? (
               <div className="stat">
@@ -111,7 +112,7 @@ function User() {
                 </div>
               </div>
             ) : (
-              <></>
+              <>N/A</>
             )}
             {userStats.chess_bullet.last.rating ? (
               <div className="stat">
@@ -124,7 +125,7 @@ function User() {
                 </div>
               </div>
             ) : (
-              <></>
+              <>N/A</>
             )}
             {userStats.chess_daily.last.rating ? (
               <div className="stat">
@@ -137,10 +138,11 @@ function User() {
                 </div>
               </div>
             ) : (
-              <></>
+              <>N/A</>
             )}
           </div>
         </div>
+        <RecentGames />
       </div>
     </>
   );
