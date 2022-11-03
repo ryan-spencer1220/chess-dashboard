@@ -42,10 +42,30 @@ const UserSearch = () => {
     }
   };
 
+  const fetchUserGames = async () => {
+    try {
+      let res = await fetch(
+        `https://api.chess.com/pub/player/${userName}/games/${new Date().getFullYear()}/${
+          new Date().getMonth() + 1
+        }`
+      );
+      let resJSON = await res.json();
+      if (res.status === 200) {
+        setUserData(resJSON);
+        console.log(resJSON);
+      } else {
+        setError("Something went wrong, please check your username!");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     fetchUserData();
     fetchUserStats();
+    fetchUserGames();
   };
 
   return (
