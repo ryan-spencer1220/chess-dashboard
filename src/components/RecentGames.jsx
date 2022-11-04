@@ -6,8 +6,6 @@ import { ChessContext } from "../context/ChessContext";
 const RecentGames = () => {
   const { userGames } = useContext(ChessContext);
 
-  console.log(userGames.games);
-
   return (
     <div className="overflow-x-auto p-10">
       <table className="table table-zebra w-full">
@@ -27,7 +25,7 @@ const RecentGames = () => {
             .slice(0)
             .reverse()
             .map((game, id) => (
-              <tr className="hover" href={game.url}>
+              <tr className="hover">
                 <th>{id + 1}</th>
                 <td>{game.white.username}</td>
                 <td>{game.white.rating}</td>
