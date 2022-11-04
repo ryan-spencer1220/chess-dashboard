@@ -13,6 +13,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userData, setUserData] = useState(null);
   const [userStats, setUserStats] = useState(null);
+  const [userGames, setUserGames] = useState(null);
 
   return (
     <ChessContext.Provider
@@ -23,6 +24,8 @@ function App() {
         setUserData,
         userStats,
         setUserStats,
+        userGames,
+        setUserGames,
       }}
     >
       <Router>

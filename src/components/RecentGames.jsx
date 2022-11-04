@@ -1,36 +1,46 @@
 import React from "react";
+import { useContext } from "react";
+import { a } from "react-router-dom";
+import { ChessContext } from "../context/ChessContext";
 
 const RecentGames = () => {
+  const { userGames } = useContext(ChessContext);
+
+  console.log(userGames.games);
+
   return (
     <div className="overflow-x-auto p-10">
       <table className="table table-zebra w-full">
         <thead>
           <tr>
             <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>White</th>
+            <th>Rating</th>
+            <th>Black</th>
+            <th>Rating</th>
+            <th>Category</th>
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>Blue</td>
-          </tr>
-          <tr>
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>Purple</td>
-          </tr>
-          <tr>
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>Red</td>
-          </tr>
+          {userGames.games
+            .slice(0)
+            .reverse()
+            .map((game, id) => (
+              <tr className="hover" href={game.url}>
+                <th>{id + 1}</th>
+                <td>{game.white.username}</td>
+                <td>{game.white.rating}</td>
+                <td>{game.black.username}</td>
+                <td>{game.black.rating}</td>
+                <td>{game.time_class}</td>
+                <td>
+                  {game.pgn[52]}
+                  {game.pgn[53]}/{game.pgn[55]}
+                  {game.pgn[56]}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

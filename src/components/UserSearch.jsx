@@ -4,7 +4,7 @@ import Chess from "../components/assets/chess.jpg";
 import { Link } from "react-router-dom";
 
 const UserSearch = () => {
-  const { userName, setUserName, setUserData, setUserStats } =
+  const { userName, setUserName, setUserData, setUserStats, setUserGames } =
     useContext(ChessContext);
   const [error, setError] = useState("");
 
@@ -51,8 +51,7 @@ const UserSearch = () => {
       );
       let resJSON = await res.json();
       if (res.status === 200) {
-        setUserData(resJSON);
-        console.log(resJSON);
+        setUserGames(resJSON);
       } else {
         setError("Something went wrong, please check your username!");
       }
