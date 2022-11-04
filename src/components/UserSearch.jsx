@@ -24,7 +24,6 @@ const UserSearch = () => {
       let resJSON = await res.json();
       if (res.status === 200) {
         setUserStats(resJSON);
-        console.log(userName, resJSON);
       } else {
         setError("Something went wrong, please check your username!");
       }
@@ -39,7 +38,6 @@ const UserSearch = () => {
       let resJSON = await res.json();
       if (res.status === 200) {
         setUserData(resJSON);
-        console.log(resJSON);
       } else {
         setError("Something went wrong, please check your username!");
       }
@@ -57,12 +55,7 @@ const UserSearch = () => {
       );
       let resJSON = await res.json();
       if (res.status === 200) {
-        console.log("current month ", resJSON.games);
         setUserGames(resJSON.games);
-        console.log("games", resJSON.games.length);
-        if (resJSON.games.length < 30) {
-          fetchUserGames2();
-        }
       } else {
         setError("Something went wrong, please check your username!");
       }
@@ -76,12 +69,15 @@ const UserSearch = () => {
       let res2 = await fetch(
         `https://api.chess.com/pub/player/${userName}/games/${new Date().getFullYear()}/${new Date().getMonth()}`
       );
-      let resJSON2 = await res2.json();
-      console.log("previous month ", resJSON2.games);
+      const resJSON2 = await res2.json();
+      const gameArray2 = resJSON2.games.concat(userGames);
+      console.log(gameArray2);
+      const thirtyGames = gameArray2.slice(
+        gameArray2.length - 31,
+        gameArray2.length - 1
+      );
       if (res2.status === 200) {
-        setUserGames(userGames.concat(resJSON2.games));
-        console.log("games2", userGames);
-        console.log("games2", resJSON2.games.length);
+        setUserGames(thirtyGames);
       } else {
         setError("Something went wrong, please check your username!");
       }
@@ -94,7 +90,7 @@ const UserSearch = () => {
     e.preventDefault();
     fetchUserData();
     fetchUserStats();
-    fetchUserGames();
+    fetchUserGames().then(fetchUserGames2());
   };
 
   return (
