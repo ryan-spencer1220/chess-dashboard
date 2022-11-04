@@ -1,10 +1,12 @@
 import React from "react";
 import { useContext } from "react";
-import { a } from "react-router-dom";
 import { ChessContext } from "../context/ChessContext";
+import { RiVipCrown2Line } from "react-icons/ri";
 
 const RecentGames = () => {
   const { userGames } = useContext(ChessContext);
+
+  console.log(userGames);
 
   return (
     <div className="overflow-x-auto p-10">
@@ -21,15 +23,22 @@ const RecentGames = () => {
           </tr>
         </thead>
         <tbody>
-          {userGames.games
+          {userGames
             .slice(0)
             .reverse()
             .map((game, id) => (
-              <tr className="hover">
+              <tr className="hover" key={id}>
                 <th>{id + 1}</th>
-                <td>{game.white.username}</td>
+                <td>
+                  {game.white.username}
+                  {game.white.result === "win" ? <RiVipCrown2Line /> : <></>}
+                </td>
                 <td>{game.white.rating}</td>
-                <td>{game.black.username}</td>
+                <td>
+                  {game.black.username}
+                  {game.black.result === "win" ? <RiVipCrown2Line /> : <></>}
+                </td>
+
                 <td>{game.black.rating}</td>
                 <td>{game.time_class}</td>
                 <td>
