@@ -14,26 +14,12 @@ function Navbar() {
     "synthwave",
     "retro",
     "cyberpunk",
-    "valentine",
-    "halloween",
-    "garden",
-    "forest",
-    "aqua",
-    "lofi",
     "pastel",
     "fantasy",
     "wireframe",
     "black",
     "luxury",
     "dracula",
-    "cmyk",
-    "autumn",
-    "business",
-    "acid",
-    "lemonade",
-    "night",
-    "coffee",
-    "winter",
   ];
 
   useEffect(() => {
@@ -52,31 +38,26 @@ function Navbar() {
         <div className="flex-1 px-2 mx-2">
           <div className="flex justify-end">
             <Link to="/" className="btn btn-ghost rounded-btn">
-              Home
+              home
             </Link>
             <Link to="/about" className="btn btn-ghost rounded-btn">
-              About
+              about
             </Link>
-            <div className="dropdown dropdown-end rounded-btn">
-              <label tabIndex={0} className="btn btn-ghost rounded-btn">
-                Theme
-              </label>
-              <select
-                tabIndex={0}
-                className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
-                data-choose-theme
-              >
-                {themeValues.map((value) => (
-                  <option
-                    className="text-primary"
-                    key={value.toLowerCase()}
-                    value={value.toLowerCase()}
-                  >
-                    <a>{value}</a>
-                  </option>
-                ))}
-              </select>
-            </div>
+            <select
+              tabIndex={0}
+              className="select select-primary max-w-xs border-none active:none"
+              data-choose-theme
+            >
+              {themeValues.map((value) => (
+                <option
+                  className="text-primary"
+                  key={value.toLowerCase()}
+                  value={value.toLowerCase()}
+                >
+                  <a>{value}</a>
+                </option>
+              ))}
+            </select>
           </div>
         </div>
       </div>

@@ -29,12 +29,12 @@ const RecentGames = () => {
             .map((game, id) => (
               <tr className="hover" key={id}>
                 <th>{id + 1}</th>
-                <td>
+                <td className="flex">
                   {game.white.username}
                   {game.white.result === "win" ? <RiVipCrown2Line /> : <></>}
                 </td>
                 <td>{game.white.rating}</td>
-                <td>
+                <td className="flex">
                   {game.black.username}
                   {game.black.result === "win" ? <RiVipCrown2Line /> : <></>}
                 </td>
