@@ -61,20 +61,21 @@ function Navbar() {
               <label tabIndex={0} className="btn btn-ghost rounded-btn">
                 Theme
               </label>
-              <ul
+              <select
                 tabIndex={0}
                 className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+                data-choose-theme
               >
                 {themeValues.map((value) => (
-                  <li
+                  <option
                     className="text-primary"
                     key={value.toLowerCase()}
                     value={value.toLowerCase()}
                   >
                     <a>{value}</a>
-                  </li>
+                  </option>
                 ))}
-              </ul>
+              </select>
             </div>
           </div>
         </div>
