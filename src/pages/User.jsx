@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { ChessContext } from "../context/ChessContext";
 import RecentGames from "../components/RecentGames";
 import PlayerRating from "../components/PlayerRating";
+import PlayerBest from "../components/PlayerBest";
 
 function User() {
-  const { userData, userStats } = useContext(ChessContext);
+  const { userData } = useContext(ChessContext);
 
   const {
     avatar,
@@ -85,6 +86,7 @@ function User() {
           </div>
         </div>
         <PlayerRating />
+        <PlayerBest />
         <RecentGames />
       </div>
     </>
