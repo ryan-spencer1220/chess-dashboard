@@ -25,6 +25,8 @@ function User() {
     title,
   } = userData;
 
+  console.log(userData);
+
   return (
     <>
       <div className="w-full mx-auto lg:w-10/12">
@@ -47,10 +49,13 @@ function User() {
             <div className="mb-6">
               <h1 className="text-3xl card-title">
                 {name}
-                <div className="ml-2 mr-1 badge badge-success">{title}</div>
+                <div className="ml-2 mr-1 badge badge-success">
+                  {last_online}
+                </div>
                 {is_streamer && (
                   <div className="mx-1 badge badge-info">Streamer</div>
                 )}
+                <div className="ml-2 mr-1 badge badge-success">{title}</div>
               </h1>
               <p>{username}</p>
               <div className="mt-4 card-actions">
