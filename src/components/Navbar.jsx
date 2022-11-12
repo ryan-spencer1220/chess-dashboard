@@ -27,7 +27,7 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
+    <nav className="navbar mb-12 shadow-lg bg-neutral">
       <div className="container mx-auto">
         <div className="flex-none px-2 mx-2">
           <FaChess className="inline pr-2 text-3xl" />
