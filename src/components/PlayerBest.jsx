@@ -1,12 +1,6 @@
 import React from "react";
-import { FaCodepen, FaStore, FaUserFriends, FaUsers } from "react-icons/fa";
-import { MdOutlineCardMembership } from "react-icons/md";
-import { AiFillCrown } from "react-icons/ai";
 import { ChessContext } from "../context/ChessContext";
 import { useContext } from "react";
-import { TiWeatherSunny } from "react-icons/ti";
-import { BsLightningFill, BsFillStopwatchFill } from "react-icons/bs";
-import { GiBulletBill } from "react-icons/gi";
 
 const PlayerRating = () => {
   const { userStats } = useContext(ChessContext);
