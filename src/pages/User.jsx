@@ -89,7 +89,7 @@ function User() {
             </div>
           </div>
         </div>
-        <PlayerRating />
+        {/* <PlayerRating /> */}
         <PlayerBest />
         <RecentGames />
       </div>
