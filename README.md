@@ -20,8 +20,11 @@
 
 This web application was created to help users visualize user stats from various Chess.com API endpoints. Users can search for a given Chess.com username, press enter, are redirected to the stats page. Here users can see basic stats (username, location, etc.), ratings for various time controls, and a list of their 30 most recent games. The application utilizes TailwindCSS and the DaisyUI framework.
 
-<img width="1384" alt="Screen Shot 2022-02-16 at 3 36 47 PM" src="https://user-images.githubusercontent.com/86761275/154376185-8c32a941-fc32-4421-94f7-6e53655408bc.png">
-<img width="1349" alt="Screen Shot 2022-02-16 at 3 37 27 PM" src="https://user-images.githubusercontent.com/86761275/154376216-b6488096-c21a-4d04-bdd6-436d3abe77cf.png">
+<img width="1430" alt="Screen Shot 2022-12-28 at 6 51 34 PM" src="https://user-images.githubusercontent.com/86761275/209897385-c5e22cc4-d659-485d-b1f4-a3c439f632c7.png">
+<img width="1430" alt="Screen Shot 2022-12-28 at 6 51 55 PM" src="https://user-images.githubusercontent.com/86761275/209897388-8583c63c-1cc9-480a-ae83-09d3e2aa917d.png">
+<img width="1430" alt="Screen Shot 2022-12-28 at 6 52 48 PM" src="https://user-images.githubusercontent.com/86761275/209897389-3d53b499-ccfe-44e4-8d36-5cab574670b0.png">
+<img width="1426" alt="Screen Shot 2022-12-28 at 6 53 01 PM" src="https://user-images.githubusercontent.com/86761275/209897390-d48ac052-518e-4dd7-a4b4-b1132de2d01f.png">
+
 
 ## Setup/Installation Requirements
 
