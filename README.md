@@ -10,13 +10,11 @@
 
 ## Technologies Used
 
-- VS Code Software
-- Git/Github
-- Google Chrome Browser
-- HTML
+- React/JavaScript
 - TailwindCSS/DaisyUI
 - Markdown
--
+- VS Code Software
+- Git/Github
 
 ## Description
 
