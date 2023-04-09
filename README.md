@@ -4,10 +4,6 @@
 
 #### By Ryan Spencer
 
-### _Link to GitHub Repository_
-
-- https://github.com/ryan-spencer1220/chess-dashboard
-
 ## Technologies Used
 
 - React/JavaScript
